@@ -89,6 +89,15 @@ export class Tresor {
     }
   }
 
+  removeGegenstand_v1(gegenstand: Gegenstand): void {
+    let gegendstandToRemove = this.gegenstaende.find((g) => g !== gegenstand);
+    if (gegendstandToRemove !== gegenstand) {
+      this.gegenstaende = this.gegenstaende.filter(g => g !== gegendstandToRemove)
+    } else {
+      throw new GegenstandNichtGefundenError(gegenstand.id);
+    }
+  }
+
   /**
    * 1. sinnvollerweise zunächst prüfen, ob der Gegenstand im Tresor ist
    *    (vgl. gewählte Variante für "Gegenstand finden", also für 'getGegenstand')
