@@ -26,7 +26,7 @@ try {
   console.log(t1.berechneGesamtwert());
   t1.removeGegenstand(a2);
   console.log(t1.toString());
-  console.log(t1.getGegenstand_v2(1).toString());
+  console.log(t1.getGegenstand(1).toString());
   console.log(t1.berechneGesamtwert());
 } catch (error) {
   console.log(error.name + ':\t' + error.message);

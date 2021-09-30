@@ -19,12 +19,17 @@ export class Tresor {
   //todo Gegenstand finden (getGegenstand)
   getGegenstand(id: number): Gegenstand {
     // noch Fehler haft.
-    let gefundenergegenstand = this.gegenstaende.forEach((element) => {
+    let gefundenergegenstand: Gegenstand;
+    this.gegenstaende.forEach((element) => {
       if (element.id === id) {
-        return element;
+        gefundenergegenstand = element;
       }
     });
-    throw new GegenstandNichtGefundenError(id);
+    if (gefundenergegenstand === undefined) {
+      throw new GegenstandNichtGefundenError(id);
+    } else {
+      return gefundenergegenstand;
+    }
   }
 
   getGegenstand_v2(id: number): Gegenstand {
