@@ -18,7 +18,6 @@ export class Tresor {
 
   //todo Gegenstand finden (getGegenstand)
   getGegenstand(id: number): Gegenstand {
-    // noch Fehler haft.
     let gefundenergegenstand: Gegenstand;
     this.gegenstaende.forEach((element) => {
       if (element.id === id) {
@@ -32,7 +31,30 @@ export class Tresor {
     }
   }
 
+  getGegenstand_v1(id: number): Gegenstand {
+    let gefundenerGegenstand: Gegenstand;
+    for (let i: number = 0; i < this.gegenstaende.length; i++) {
+      if (this.gegenstaende[i].id === id) {
+        gefundenerGegenstand = this.gegenstaende[i];
+      }
+    }
+    if (gefundenerGegenstand === undefined) {
+      throw new GegenstandNichtGefundenError(id);
+    } else {
+      return gefundenerGegenstand;
+    }
+  }
+
   getGegenstand_v2(id: number): Gegenstand {
+    for (let g of this.gegenstaende) {
+      if (g.id === id) {
+        return g;
+      }
+    }
+    throw new GegenstandNichtGefundenError(id);
+  }
+
+  getGegenstand_v3(id: number): Gegenstand {
     let gefundenerGegenstand = this.gegenstaende.find(
       (gegenstand) => gegenstand.id === id
     );
