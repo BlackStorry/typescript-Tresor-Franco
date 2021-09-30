@@ -92,7 +92,9 @@ export class Tresor {
   removeGegenstand_v1(gegenstand: Gegenstand): void {
     let gegendstandToRemove = this.gegenstaende.find((g) => g !== gegenstand);
     if (gegendstandToRemove !== gegenstand) {
-      this.gegenstaende = this.gegenstaende.filter(g => g !== gegendstandToRemove)
+      this.gegenstaende = this.gegenstaende.filter(
+        (g) => g !== gegendstandToRemove
+      );
     } else {
       throw new GegenstandNichtGefundenError(gegenstand.id);
     }
@@ -118,6 +120,7 @@ export class Tresor {
     this.gegenstaende.forEach((gegenstand) => {
       text += gegenstand.toString();
     });
+    text += "\n\nGesamtwert: "+this.berechneGesamtwert();
     return text;
   }
 }
